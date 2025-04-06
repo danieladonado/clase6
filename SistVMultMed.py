@@ -50,11 +50,7 @@ class Mascota:
         self.__lista_medicamentos = n
         
     def existeMedicamento(self, nombre_medicamento):
-        for med in self.__lista_medicamentos:
-            if med.verNombre() == nombre_medicamento:
-                return True
-        #si no lo encuentra, devuelve False
-        return False
+        return any(med.verNombre()== nombre_medicamento for med in self.__lista_medicamentos)
     
 class sistemaV:
     def __init__(self):
@@ -131,6 +127,7 @@ def main():
                 mas.asignarFecha(fecha)
                 
                 lista_med=[]
+                mas.asignarLista_Medicamentos(lista_med)
                 for i in range(nm):
                     while True:
                         nombre_medicamento = input("Ingrese el nombre del medicamento: ")
