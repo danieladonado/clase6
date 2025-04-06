@@ -52,7 +52,7 @@ class Mascota:
 class sistemaV:
     def __init__(self):
         self.__lista_mascotas = []
-        self.__numero_mascotas = len(self.__lista_mascotas)
+        
     
     def verificarExiste(self,historia):
         for m in self.__lista_mascotas:
@@ -91,7 +91,7 @@ class sistemaV:
 
 def main():
     servicio_hospitalario = sistemaV()
-    # sistma=sistemaV()
+    
     while True:
         menu=int(input('''\nIngrese una opción: 
                        \n1- Ingresar una mascota 
@@ -106,8 +106,9 @@ def main():
                 print("No hay espacio ...") 
                 continue
             historia=int(input("Ingrese la historia clínica de la mascota: "))
-            #   verificacion=servicio_hospitalario.verDatosPaciente(historia)
+            verificacion=servicio_hospitalario.verDatosPaciente(historia)
             if servicio_hospitalario.verificarExiste(historia) == False:
+                
                 nombre=input("Ingrese el nombre de la mascota: ")
                 tipo=input("Ingrese el tipo de mascota (felino o canino): ")
                 peso=int(input("Ingrese el peso de la mascota: "))
@@ -138,7 +139,7 @@ def main():
         elif menu==2: # Ver fecha de ingreso
             q = int(input("Ingrese la historia clínica de la mascota: "))
             fecha = servicio_hospitalario.verFechaIngreso(q)
-            # if servicio_hospitalario.verificarExiste == True
+            
             if fecha != None:
                 print("La fecha de ingreso de la mascota es: " + fecha)
             else:
@@ -168,7 +169,7 @@ def main():
                 print("No se ha podido eliminar la mascota")
         
         elif menu==6:
-            print("Usted ha salido del sistema de servicio de hospitalización...")
+            print("Gracias por usar el sistema")
             break
         
         else:
