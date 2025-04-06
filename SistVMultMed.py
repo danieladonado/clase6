@@ -36,7 +36,7 @@ class Mascota:
     def verLista_Medicamentos(self):
         return self.__lista_medicamentos 
             
-    def asignarNombre(self,n):
+    '''def asignarNombre(self,n):
         self.__nombre=n
     def asignarHistoria(self,nh):
         self.__historia=nh
@@ -47,11 +47,12 @@ class Mascota:
     def asignarFecha(self,f):
         self.__fecha_ingreso=f
     def asignarLista_Medicamentos(self,n):
-        self.__lista_medicamentos = n 
+        self.__lista_medicamentos = n '''
     
 class sistemaV:
     def __init__(self):
         self.__lista_mascotas = []
+        self.__numero_mascotas = len(self.__lista_mascotas)
     
     def verificarExiste(self,historia):
         for m in self.__lista_mascotas:
