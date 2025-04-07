@@ -3,6 +3,10 @@ class Medicamento:
     def __init__(self):
         self.__nombre = "" 
         self.__dosis = 0 
+        
+    
+    def __str__(self):
+        return f"{self.nombre} - {self.dosis}"
     
     def verNombre(self):
         return self.__nombre 
@@ -53,6 +57,13 @@ class Mascota:
     def existeMedicamento(self, nombre_medicamento):
         return any(med.verNombre()== nombre_medicamento for med in self.__lista_medicamentos)
     
+    def eliminarMedicamento(self, nombre_medicamento):
+        for med in self.__lista_medicamentos:
+            if med.verNombre() == nombre_medicamento:
+                self.__lista_medicamentos.remove(med)
+                return True
+        return False
+
 class sistemaV:
     def __init__(self):
         self.__caninos = {}
@@ -116,7 +127,8 @@ def main():
                        \n3- Ver número de mascotas en el servicio 
                        \n4- Ver medicamentos que se están administrando
                        \n5- Eliminar mascota 
-                       \n6- Salir 
+                       \n6- Eiminar un medicamento
+                       \n7- Salir 
                        \nIngrese la opción: ''' ))
         if menu==1: # Ingresar una mascota 
             if servicio_hospitalario.verNumeroMascotas() >= 10:
@@ -203,7 +215,19 @@ def main():
             else:
                 print("No se ha podido eliminar la mascota")
         
-        elif menu==6:
+        elif menu == 6:
+            historia = int(input("Ingrese la historia clínica de la mascota: "))
+            mascota = servicio_hospitalario.buscarMascota(historia)
+            if mascota:
+                nombre_medicamento = input("Ingrese el nombre del medicamento que desea eliminar: ")
+                if mascota.eliminarMedicamento(nombre_medicamento):
+                    print("Medicamento eliminado exitosamente.")
+                else:
+                    print("El medicamento no se encontró en la lista.")
+            else:
+                print("La historia clínica ingresada no corresponde con ninguna mascota en el sistema.")
+
+        elif menu==7:
             print("Gracias por usar el sistema")
             break
         
